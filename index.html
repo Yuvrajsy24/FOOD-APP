@@ -1,64 +1,99 @@
+<!DOCTYPE html>
 <html>
 <head>
-<title>Food Liking App</title>
-<style>
-* {font-size: 40px; text-align: center;}
-body {background-color: azure;}
-input[type=radio] {width: 2%; height: 0.7em;}
-</style>
+  <title>Food Liking App</title>
+  <style>
+    * {
+      font-size: 30px;
+      text-align: center;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    body {
+      background: linear-gradient(to right, #fdfcfb, #e2d1c3);
+      padding-top: 50px;
+    }
+    input[type="text"] {
+      padding: 10px;
+      width: 300px;
+      font-size: 24px;
+      border-radius: 10px;
+      border: 2px solid #ccc;
+      outline: none;
+    }
+    input[type="radio"] {
+      width: 20px;
+      height: 20px;
+      margin: 0 10px;
+    }
+    input[type="submit"] {
+      padding: 10px 30px;
+      background-color: #4CAF50;
+      color: white;
+      font-size: 24px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+    h1 {
+      color: #333;
+      font-size: 48px;
+    }
+    h2 {
+      margin-top: 40px;
+      font-size: 36px;
+      color: #2c3e50;
+    }
+  </style>
 </head>
 <body>
-<h1>Food You Like</h1>
+  <h1>🍽️ Food You Like</h1>
 
-<form onsubmit="show()">
-<input type="text" id="name" placeholder="Enter Name" />
-<br/><br/>
-<input type="radio" name="f" id="ni" />North Indian
-<input type="radio" name="f" id="si" checked />South Indian
-<input type="radio" name="f" id="ff" />Fast Food
-<br/><br/>
-<input type="submit" />
-</form>
+  <form onsubmit="show()">
+    <input type="text" id="name" placeholder="Enter Your Name" />
+    <br/><br/>
+    <label><input type="radio" name="f" id="ni" /> North Indian</label>
+    <label><input type="radio" name="f" id="si" checked /> South Indian</label>
+    <label><input type="radio" name="f" id="ff" /> Fast Food</label>
+    <br/><br/>
+    <input type="submit" value="Submit" />
+  </form>
 
-<h2 id="msg"></h2>
+  <h2 id="msg"></h2>
 
-<script>
-function show() {
-	event.preventDefault();
+  <script>
+    function show() {
+      event.preventDefault();
 
-	let name = document.getElementById("name");
-	let ni = document.getElementById("ni");
-	let si = document.getElementById("si");
-	let ff = document.getElementById("ff");
-	let msg = document.getElementById("msg");
+      let name = document.getElementById("name");
+      let ni = document.getElementById("ni");
+      let si = document.getElementById("si");
+      let ff = document.getElementById("ff");
+      let msg = document.getElementById("msg");
 
-	if (name.value === "") {
-		alert("NAME can't be empty");
-		msg.innerHTML = "";
-		name.focus();
-		return;
-	}
+      if (name.value.trim() === "") {
+        alert("Name can't be empty");
+        msg.innerHTML = "";
+        name.focus();
+        return;
+      }
 
-	if (!name.value.match(/^[A-Za-z ]+$/)) {
-		alert("NAME can only contain alphabets");
-		name.value = "";
-		msg.innerHTML = "";
-		name.focus();
-		return;
-	}
+      if (!name.value.match(/^[A-Za-z ]+$/)) {
+        alert("Name can only contain alphabets");
+        name.value = "";
+        msg.innerHTML = "";
+        name.focus();
+        return;
+      }
 
-	let food = "";
-	if (ni.checked)
-		food = "North Indian";
-	else if (si.checked)
-		food = "South Indian";
-	else
-		food = "Fast Food";
+      let food = ni.checked ? "North Indian" : si.checked ? "South Indian" : "Fast Food";
 
-	let ans = "Name = " + name.value + " | Food = " + food;
-	msg.innerHTML = ans;
-}
-</script>
-
+      let ans = `👤 Name: <b>${name.value}</b><br/>🍴 Favorite Food: <b>${food}</b>`;
+      msg.innerHTML = ans;
+    }
+  </script>
 </body>
 </html>
