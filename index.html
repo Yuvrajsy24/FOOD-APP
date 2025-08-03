@@ -1,0 +1,62 @@
+<html>
+<head>
+<title>Food Liking App</title>
+<style>
+*{font-size:40px;text-align:center;}
+body{background-color:azure;}
+input[type=radio]{width:2%;height:0.7em;}
+</style>
+</head>
+<body>
+<h1>Food You Like</h1>
+
+<form onsubmit="show()">
+<input type= "text"	id= "name"	placeholder="Enter Name"/>
+<br/><br/>
+<input type = "radio"	name="f"	id="ni"/>North Indian
+<input type = "radio"	name="f"	id="si" checked=true/>South Indian
+<input type = "radio"	name="f"	id="ff"/>Fast Food
+<br/><br/>
+<input type= "submit"/>
+</form>
+<h2 id="msg">
+<script>
+function show()
+{
+event.preventDefault();
+let name = document.getElementById("name");
+let ni = document.getElementById("ni");
+let si = document.getElementById("si");
+let ff = document.getElementById("ff");
+let msg = document.getElementById("msg");
+if(name.value==="")
+{
+alert("NAME can't be empty");
+msg.innerHTML="";
+name.focus();
+return;
+}
+
+if(!name.value.match("^[A-Za-z ]+$"))
+{
+alert("NAME can only contain alphabets");
+name.value="";
+msg.innerHTML="";
+name.focus();
+return;
+}
+let food="";
+if(ni.checked)
+food="North Indian";
+else if(si.checked)
+food = "South Indian";
+else
+food="Fast Food"; 
+
+let ans = "Name= " +name.value+" "+" Food= "+food;
+msg.innerHTML=ans;
+
+}
+</script>
+</body>
+</html>
