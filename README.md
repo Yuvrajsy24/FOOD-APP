@@ -1,3 +1,4 @@
+
 # 🍽️ Food Liking App
 
 A simple web app where users enter their name and choose their favorite type of food:  
@@ -38,7 +39,7 @@ It validates the input and displays the user's food preference dynamically.
 
 ---
 
-## 🧪 How It Works
+## 🧪 How It Works ##
 
 1. User enters their name.
 2. Selects a food type (radio button).
@@ -63,4 +64,3 @@ FOOD-APP/
 ## 📢 License
 
 Free to use and modify.
-
